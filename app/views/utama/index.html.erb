@@ -1,0 +1,40 @@
+<h2>Generate kunci</h2>
+<%= form_tag("/prima", method: "get") do %>
+  <%= label_tag :berapa, "Butuh bilangan prima?" %> <br>
+  <%= text_field_tag :berapa, nil, required: true, placeholder: "minta berapa?" %>
+  <%= submit_tag "Minta" %>
+<% end %>
+<%= form_tag("/key", method: "get") do %>
+  <%= label_tag :p, "Masukkan bilangan prima:" %> <br>
+  <%= text_field_tag :p, nil, required: true %>
+  <%= submit_tag "Generate" %>
+<% end %>
+
+<div>
+  <div style="width:50%; float:left">
+    <h2>Enkripsi</h2>
+    <%= form_tag("/enkripsi", method: "post") do %>
+      Kunci publik: <br>
+      <%= text_field_tag :y, nil, required: true, placeholder: "y" %> <br>
+      <%= text_field_tag :g, nil, required: true, placeholder: "g" %> <br>
+      <%= text_field_tag :p, nil, required: true, placeholder: "p" %> <br>
+      Pesan: <br>
+      <%= text_area_tag :pesan, nil, required: true, placeholder: "Tulis pesan di sini." %>
+      <br>
+      <%= submit_tag "Enkripsi" %>
+    <% end %>
+  </div>
+
+  <div style="width:50%; float:right">
+    <h2>Dekripsi</h2>
+    <%= form_tag("/dekripsi", method: "post") do %>
+      Kunci privat: <br>
+      <%= text_field_tag :x, nil, required: true, placeholder: "x" %> <br>
+      <%= text_field_tag :p, nil, required: true, placeholder: "p" %> <br>
+      Ciphertext: <br>
+      <%= text_area_tag :ciphertext, nil, required: true, placeholder: "Paste bahasa alien di sini." %>
+      <br>
+      <%= submit_tag "Dekripsi" %>
+    <% end %>
+  </div>
+</div>
